@@ -1,0 +1,21 @@
+cc = gcc
+
+target = a.out
+
+$(target): main.o admin.o employee.o assets.o
+	$(cc)  main.o admin.o employee.o assets.o -o $(target)
+
+main.o:main.c  header/myheader.h
+	$(cc) -c main.c
+
+admin.o:source/admin.c  header/myheader.h
+	$(cc) -c source/admin.c
+
+employee.o:source/employee.c  header/myheader.h
+	$(cc) -c source/employee.c
+
+assets.o:source/assets.c  header/myheader.h
+	$(cc) -c source/assets.c
+
+clean:
+	rm -f $(target)
